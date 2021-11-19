@@ -18,13 +18,12 @@ const userSchema = new Schema<User>({
         required: true,
         unique: true,
         validate:{
-              validator: function (v) {
+            validator: function (v) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-              },
-              message: 'Por favor introduzca una dirección de correo electrónico válida',
             },
-    },    
-                
+            message: 'Por favor introduzca una dirección de correo electrónico válida',
+            },
+    },
     identificacion:{
         type: String,
         required: true,
