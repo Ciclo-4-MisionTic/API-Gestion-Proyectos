@@ -754,6 +754,11 @@ mime@1.6.0:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
+mogoose@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/mogoose/-/mogoose-0.0.1-security.tgz#2f9989ff49f11b43dc18436c237c7688caa08fa2"
+  integrity sha512-TX97LVQnLr7jzee6nRZlKKS1XXC/Xp2M5OE2Vz7L/e3mkPMupVfuG4A5tIFFNeClFJ+LH/A0bsqekZolAPOIuA==
+
 mongodb-connection-string-url@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/mongodb-connection-string-url/-/mongodb-connection-string-url-2.2.0.tgz#e2422bae91a953dc4ae5882e401301f5be39a227"
