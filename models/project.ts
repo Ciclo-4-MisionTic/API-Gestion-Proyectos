@@ -16,20 +16,20 @@ interface Proyecto{
 const projectSchema = new Schema<Proyecto>({
     nombre:{
         type:String,
-        required:true, 
+        required:true,
         unique: true,
     },
     presupuesto: {
-        type: Number, 
+        type: Number,
         required: true,
     },
     fechaInicio: {
         type:Date,
-        required: true, 
+        required: true,
     },
     fechaFin:{
         type:Date,
-        requerid: true, 
+        requerid: true,
     },
     estado:{
         type:String,
@@ -37,23 +37,23 @@ const projectSchema = new Schema<Proyecto>({
         default: Enum_EstadoProyecto.inactivo,
     },
     fase: {
-        type: String, 
+        type: String,
         enum:Enum_FaseProyecto,
         default: Enum_FaseProyecto.nula
     },
-    lider: { 
+    lider: {
         //REFERENCIA FUERTE
-        type:Schema.Types.ObjectId, 
+        type:Schema.Types.ObjectId,
         required: true,
         ref: UserModel,
     },
     objetivos: [{
         descripcion:{
             type:String,
-            required: true, 
+            required: true,
         },
         tipo: {
-            type: String, 
+            type: String,
             enum: Enum_TipoObjetivo,
             required: true,
         },
@@ -62,4 +62,4 @@ const projectSchema = new Schema<Proyecto>({
 })
 
 const ProjectModel = model("Proyecto", projectSchema,)
-export {ProjectModel}; 
+export {ProjectModel};
