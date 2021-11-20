@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Mongoose } from "mongoose";
 import { Enum_EstadoIncripcion } from "./enums";
 import { ProjectModel } from "./project";
 import { UserModel } from "./user";

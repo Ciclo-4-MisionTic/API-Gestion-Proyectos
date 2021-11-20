@@ -25,7 +25,7 @@ const main = async () => {
             lider: "618d7673464ac96a96cdddc2",
             objetivos: [ 
                 {descripcion: "Este es el objetivo general", tipo: Enum_TipoObjetivo.general},
-                {descripcion: "Esteay es el objetivo especifico1", tipo: Enum_TipoObjetivo.especifico},
+                {descripcion: "Este es el objetivo especifico1", tipo: Enum_TipoObjetivo.especifico},
                 {descripcion: "Este es el objetivo especifico2", tipo: Enum_TipoObjetivo.especifico},              
             ]
         })
@@ -35,4 +35,4 @@ const main = async () => {
     console.log ("proyecto ", proyectoCreado)
 
 }
-main()
+main();
