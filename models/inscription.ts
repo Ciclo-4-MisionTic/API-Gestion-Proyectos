@@ -8,7 +8,7 @@ interface Inscription{
     fechaIngreso: Date;
     fechaEgreso: Date;
     proyecto: Schema.Types.ObjectId;
-    estudiante: Schema.Types.ObjectId;
+    rol: Schema.Types.ObjectId;
 }
 
 const inscriptionSchema = new Schema <Inscription>({
@@ -30,7 +30,7 @@ const inscriptionSchema = new Schema <Inscription>({
         ref: ProjectModel,
         required: true,
     },
-    estudiante:{
+    rol:{
         type:Schema.Types.ObjectId,
         ref: UserModel,
         required: true,
