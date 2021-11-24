@@ -46,6 +46,12 @@ enum Enum_TipoObjetivo{
     }
 
     type Objetivo{
+        _id: ID!
+        descripcion:String!
+        tipo:Enum_TipoObjetivo!
+    }
+
+    input crearObjetivo{
         descripcion:String!
         tipo:Enum_TipoObjetivo!
     }
@@ -98,6 +104,7 @@ enum Enum_TipoObjetivo{
             estado: Enum_EstadoProyecto!
             fase: Enum_FaseProyecto!
             lider: String!
+            objetivos: [crearObjetivo]
         ):Proyecto
     }
 
