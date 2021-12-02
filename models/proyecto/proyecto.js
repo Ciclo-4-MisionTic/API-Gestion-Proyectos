@@ -1,19 +1,9 @@
-import { Schema, model } from "mongoose";
-import { Enum_EstadoProyecto, Enum_FaseProyecto, Enum_TipoObjetivo } from "./enums";
-import { UserModel } from "./user";
+import mongoose from 'mongoose';
+import { UserModel } from "../usuario/usuario.js";
 
-interface Proyecto{
-    nombre:string,
-    presupuesto:number,
-    fechaInicio:Date,
-    fechaFin:Date,
-    estado: Enum_EstadoProyecto,
-    fase: Enum_FaseProyecto,
-    lider: Schema.Types.ObjectId,
-    objetivos: [{descripcion:String, tipo:Enum_TipoObjetivo}],
+const {Schema,model} = mongoose;
 
-}
-const projectSchema = new Schema<Proyecto>({
+const projectSchema = new Schema({
     nombre:{
         type:String,
         required:true, 
@@ -33,13 +23,13 @@ const projectSchema = new Schema<Proyecto>({
     },
     estado:{
         type:String,
-        enum:Enum_EstadoProyecto,
-        default: Enum_EstadoProyecto.inactivo,
+        enum:["ACTIVO","INACTIVO"],
+        default: "INACTIVO",
     },
     fase: {
         type: String, 
-        enum:Enum_FaseProyecto,
-        default: Enum_FaseProyecto.nula
+        enum:["INICIADO", "DESARROLLO", "TERMINADO", "NULO"],
+        default: "NULO"
     },
     lider: { 
         //REFERENCIA FUERTE
@@ -54,7 +44,7 @@ const projectSchema = new Schema<Proyecto>({
         },
         tipo: {
             type: String, 
-            enum: Enum_TipoObjetivo,
+            enum: ["GENERAL", "ESPECIFICO"],
             required: true,
         },
     }]
