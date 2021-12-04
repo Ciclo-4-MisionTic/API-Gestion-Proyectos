@@ -1,4 +1,4 @@
-import {gql} from 'apollo-server-express'; 
+import {gql} from 'apollo-server-express';
 
 const tiposInscripcion = gql`
     type Inscripcion{
@@ -17,8 +17,8 @@ const tiposInscripcion = gql`
         crearInscripcion(
         estado: Enum_EstadoInscripcion!
         proyecto: String!
-        estudiante: String! 
-        ): Inscripcion 
+        estudiante: String!
+        ): Inscripcion
 
         aprobarInscripcion(id: String): Inscripcion
 
