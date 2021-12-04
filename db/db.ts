@@ -1,9 +1,8 @@
 import { connect } from "mongoose";
 
 const conectarBD = async () =>{
-return await connect(
-    'mongodb+srv://admin:AdminCodex@gestorcodexproject.7gfui.mongodb.net/GestorCodexProject?retryWrites=true&w=majority'
-).then(() =>{
+return await connect( process.env.DATABASE_URL)
+    .then(() =>{
     console.log('Conexión exitosa');
 }).catch((e)=>{
     console.error("Error conectando a la bd", e);
