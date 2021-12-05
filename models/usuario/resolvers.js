@@ -5,7 +5,15 @@ const resolversUsuario ={
 
     Query: {
         Usuarios: async (parent,args)=>{
-            const usuarios = await UserModel.find();
+            const usuarios = await UserModel.find().populate([
+                {
+                    path: "inscripciones",
+                    populate: {
+                        path: "proyecto",
+                        populate: [{path: "lider"},{path: "avances"}]
+                    }
+                }
+            ]);
             return  usuarios;
         },
         Usuario: async(parent,args) =>{
