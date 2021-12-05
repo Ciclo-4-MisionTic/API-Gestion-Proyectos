@@ -1,12 +1,14 @@
 import { InscriptionModel } from "./inscripcion.js";
 
 const resolversInscripciones = {
+
     Query:{
         Inscripciones: async (parent, args)=>{
             const Inscripciones = await InscriptionModel.find().populate('proyecto').populate('estudiante');
             return Inscripciones;
         },
     },
+
     Mutation:{
         crearInscripcion: async (parent,args)=>{
             const inscripcionCreada = await InscriptionModel.create({
@@ -16,6 +18,7 @@ const resolversInscripciones = {
             });
             return inscripcionCreada;
         },
+
         aprobarInscripcion: async (parent,args)=>{
             const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,{
                 estado: "ACEPTADO",
@@ -24,8 +27,31 @@ const resolversInscripciones = {
             {new: true}
             );
             return inscripcionAprobada;
-        }
-    }
-};
+        },
+        editarInscripcion: async(parent,args) => {
+            const inscripcionEditada = await UserModel.findByIdAndUpdate(args._id,{
+                estado: args.estado,
+                fechaEgreso:args.Date,
+                estudiante: args.estudiante,
+            },
+            {new:true}
+            );
+            return inscripcionEditada;
+            },
 
-export { resolversInscripciones };
+        eliminarInscripcion: async(parent, args) =>{
+                if(Object.keys(args).includes("_id")){
+                    const inscripcionEliminada = await UserModel.findOneAndDelete({_id: args._id});
+                    return inscripcionEliminada;   
+                } else if(Object.keys(args).includes("proyecto")){
+                    const inscripcionEliminada = await UserModel.findOneAndDelete({ proyecto: args.proyecto});
+                    return inscripcionEliminada;   
+                }
+    
+            },
+
+},
+
+}
+
+export { resolversInscripciones }

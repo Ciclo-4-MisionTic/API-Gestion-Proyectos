@@ -1,16 +1,16 @@
-import {gql} from 'apollo-server-express'; 
+import {gql} from 'apollo-server-express';
 
 const tiposProyecto = gql`
 
     type Objetivo{
         _id: ID
-        descripcion:String!, 
+        descripcion:String!,
         tipo:Enum_TipoObjetivo
     }
 
     input crearObjetivo{
         _id: ID
-        descripcion:String!, 
+        descripcion:String!,
         tipo:Enum_TipoObjetivo
     }
 
