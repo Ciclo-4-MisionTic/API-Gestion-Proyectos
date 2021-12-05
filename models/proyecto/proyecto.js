@@ -1,25 +1,24 @@
 import mongoose from 'mongoose';
 import { UserModel } from "../usuario/usuario.js";
-
 const {Schema,model} = mongoose;
 
 const projectSchema = new Schema({
     nombre:{
         type:String,
-        required:true, 
+        required:true,
         unique: true,
     },
     presupuesto: {
-        type: Number, 
+        type: Number,
         required: true,
     },
     fechaInicio: {
         type:Date,
-        required: true, 
+        required: true,
     },
     fechaFin:{
         type:Date,
-        requerid: true, 
+        requerid: true,
     },
     estado:{
         type:String,
@@ -27,29 +26,43 @@ const projectSchema = new Schema({
         default: "INACTIVO",
     },
     fase: {
-        type: String, 
+        type: String,
         enum:["INICIADO", "DESARROLLO", "TERMINADO", "NULO"],
         default: "NULO"
     },
-    lider: { 
-        //REFERENCIA FUERTE
-        type:Schema.Types.ObjectId, 
+    lider: {
+        type:Schema.Types.ObjectId,
         required: true,
         ref: UserModel,
     },
     objetivos: [{
         descripcion:{
             type:String,
-            required: true, 
+            required: true,
         },
         tipo: {
-            type: String, 
+            type: String,
             enum: ["GENERAL", "ESPECIFICO"],
             required: true,
         },
     }]
 
-})
+}, {
+    toJSON: { virtuals: true }, // So `res.json()` and other `JSON.stringify()` functions include virtuals
+    toObject: { virtuals: true } // So `console.log()` and other functions that use `toObject()` include virtuals
+}
+)
+
+projectSchema.virtual("avances",{
+    ref: "Avance",
+    localField: "_id",
+    foreignField: "proyecto"
+});
+projectSchema.virtual("inscripciones",{
+    ref: "Inscripcion",
+    localField: "_id",
+    foreignField: "proyecto"
+});
 
 const ProjectModel = model("Proyecto", projectSchema,)
 export {ProjectModel}; 
