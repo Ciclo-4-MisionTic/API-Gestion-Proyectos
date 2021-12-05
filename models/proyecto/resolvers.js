@@ -13,7 +13,7 @@ const resolversProyecto ={
             return ProyectoFiltrado;
         },
         Proyecto: async(parent,args) =>{
-            const proyecto= await ProjectModel.findOne({_id:args._id});
+            const proyecto= await ProjectModel.findOne({_id:args._id}).populate("lider").populate('avances').populate('inscripciones');
             return proyecto; 
         }
     },
