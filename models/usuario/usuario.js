@@ -57,4 +57,4 @@ localField: '_id',
 foreignField: 'estudiante',
     });
 const UserModel = model("User", userSchema);
-export { UserModel }
+export { UserModel };
