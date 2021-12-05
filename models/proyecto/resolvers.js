@@ -8,7 +8,7 @@ const resolversProyecto ={
             return proyectos;
         }
     },
-    Mutation:{ 
+    Mutation:{
 
         crearProyecto: async(parent,args) => {
             const proyectoCreado = await ProjectModel.create({
