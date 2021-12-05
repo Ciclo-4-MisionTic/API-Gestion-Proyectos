@@ -11,8 +11,9 @@ const resolversUsuario ={
                     populate: {
                         path: "proyecto",
                         populate: [{path: "lider"},{path: "avances"}]
-                    }
-                }
+                    },
+                },
+
             ]);
             return  usuarios;
         },
