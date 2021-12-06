@@ -29,6 +29,10 @@ const tiposAvance = gql`
         ): Avance
 
         eliminarAvance(_id:String descripcion: String): Avance
+        
+        crearObservacion(idAvance:String!, campos: camposObservacion): Avance
+
+        eliminarAvance(_id:String descripcion: String): Avance
     }
 
 `;

@@ -31,6 +31,7 @@ const resolversAvance = {
             {new:true}
             );
             return avanceEditado;
+
             },
 
             eliminarAvance: async(parent, args) =>{
@@ -43,6 +44,29 @@ const resolversAvance = {
                 }
             },
             
+
+        },
+        
+        eliminarAvance: async(parent, args) =>{
+            if(Object.keys(args).includes("_id")){
+                const avanceEliminado = await ModeloAvance.findOneAndDelete({_id: args._id});
+                return avanceEliminado;
+            } else if(Object.keys(args).includes("descripcion")){
+                const avanceEliminado = await ModeloAvance.findOneAndDelete({ descripcion: args.descripcion});
+                return avanceEliminado;
+            }
+        },
+        
+        crearObservacion: async (parent,args)=>{
+            const avanceConObservaciones = await ModeloAvance.findByIdAndUpdate(args.idAvance,{
+                $addToSet:{
+                    observaciones:{... args.campos},
+                },
+            }, {new:true});
+
+            return avanceConObservaciones;
+        },
+
     },
 };
 
