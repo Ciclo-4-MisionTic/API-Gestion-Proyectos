@@ -21,11 +21,23 @@ const resolversAvance = {
                 descripcion: args.descripcion,
                 proyecto: args.proyecto,
                 creadoPor: args.creadoPor,
+                observaciones: args.observaciones,
             })
-
 
             return avanceCreado;
         },
+
+        crearObservacion: async (parent,args)=>{
+            const avanceConObservaciones = await ModeloAvance.findByIdAndUpdate(args.idAvance,{
+                $addToSet:{
+                    observaciones:{... args.campos},
+                },
+            }, {new:true});
+
+            return avanceConObservaciones;
+        },
+
+
     },
 };
 
