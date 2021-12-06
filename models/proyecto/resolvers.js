@@ -14,7 +14,7 @@ const resolversProyecto ={
         },
         Proyecto: async(parent,args) =>{
             const proyecto= await ProjectModel.findOne({_id:args._id}).populate("lider").populate('avances').populate('inscripciones');
-            return proyecto; 
+            return proyecto;
         }
     },
     Mutation:{
@@ -41,10 +41,10 @@ const resolversProyecto ={
         eliminarProyecto: async(parent, args) =>{
             if(Object.keys(args).includes("_id")){
                 const proyectoEliminado = await ProjectModel.findOneAndDelete({_id: args._id});
-                return proyectoEliminado;   
+                return proyectoEliminado;
             } else if(Object.keys(args).includes("nombre")){
                 const proyectoEliminado = await ProjectModel.findOneAndDelete({ nombre: args.nombre});
-                return proyectoEliminado;   
+                return proyectoEliminado;
             }
         },
 
@@ -82,8 +82,7 @@ const resolversProyecto ={
               { new: true }
             );
             return proyectoObjetivoEliminado;
-            }
-
+        },
 
     }
 }

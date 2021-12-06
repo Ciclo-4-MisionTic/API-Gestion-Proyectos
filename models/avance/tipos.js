@@ -46,9 +46,14 @@ const tiposAvance = gql`
             observaciones: [crearObservacion]
         ):Avance
 
-        crearObservacion(idAvance:String!, campos: camposObservacion): Avance
+        editarAvance(
+            _id: String!
+            descripcion: String,
+        ): Avance
 
+        eliminarAvance(_id:String descripcion: String): Avance
         
+        crearObservacion(idAvance:String!, campos: camposObservacion): Avance
     }
 `;
 
