@@ -55,6 +55,7 @@ const resolversAvance = {
 
             return avanceConObservaciones;
         },
+
     },
 };
 

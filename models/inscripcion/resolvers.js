@@ -42,12 +42,12 @@ const resolversInscripciones = {
         eliminarInscripcion: async(parent, args) =>{
                 if(Object.keys(args).includes("_id")){
                     const inscripcionEliminada = await UserModel.findOneAndDelete({_id: args._id});
-                    return inscripcionEliminada;   
+                    return inscripcionEliminada;
                 } else if(Object.keys(args).includes("proyecto")){
                     const inscripcionEliminada = await UserModel.findOneAndDelete({ proyecto: args.proyecto});
-                    return inscripcionEliminada;   
+                    return inscripcionEliminada;
                 }
-    
+
             },
 
 },
