@@ -42,6 +42,7 @@ const resolversAvance = {
                     return avanceEliminado;
                 }
             },
+            
     },
 };
 

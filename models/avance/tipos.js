@@ -30,6 +30,7 @@ const tiposAvance = gql`
 
         eliminarAvance(_id:String descripcion: String): Avance
     }
+    
 `;
 
 export {tiposAvance}

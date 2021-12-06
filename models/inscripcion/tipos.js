@@ -24,9 +24,8 @@ const tiposInscripcion = gql`
         aprobarInscripcion(id: String): Inscripcion
 
         editarInscripcion(
-        estado: Enum_EstadoInscripcion!     
+        estado: Enum_EstadoInscripcion!
         ):Inscripcion
-        
         eliminarInscripcion(_id:String proyecto:String): Inscripcion
 
     }
