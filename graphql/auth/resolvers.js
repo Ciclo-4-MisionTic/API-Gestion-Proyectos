@@ -46,7 +46,7 @@ const resolversAutenticacion ={
             }
         },
 
-        validateToken: async(parent,args, context)=>{
+        refreshToken: async(parent,args, context)=>{
             console.log('contexto',context);
         },
     },
