@@ -82,8 +82,7 @@ const resolversProyecto ={
 { new: true }
             );
             return proyectoObjetivoEliminado;
-            }
-
+        },
 
     }
 }

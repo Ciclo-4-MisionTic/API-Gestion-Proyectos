@@ -29,7 +29,7 @@ const resolversInscripciones = {
             return inscripcionAprobada;
         },
         editarInscripcion: async(parent,args) => {
-            const inscripcionEditada = await UserModel.findByIdAndUpdate(args._id,{
+            const inscripcionEditada = await InscriptionModel.findByIdAndUpdate(args._id,{
                 estado: args.estado,
                 fechaEgreso:args.Date,
                 estudiante: args.estudiante,
@@ -41,10 +41,10 @@ const resolversInscripciones = {
 
         eliminarInscripcion: async(parent, args) =>{
                 if(Object.keys(args).includes("_id")){
-                    const inscripcionEliminada = await UserModel.findOneAndDelete({_id: args._id});
+                    const inscripcionEliminada = await InscriptionModel.findOneAndDelete({_id: args._id});
                     return inscripcionEliminada;
                 } else if(Object.keys(args).includes("proyecto")){
-                    const inscripcionEliminada = await UserModel.findOneAndDelete({ proyecto: args.proyecto});
+                    const inscripcionEliminada = await InscriptionModel.findOneAndDelete({ proyecto: args.proyecto});
                     return inscripcionEliminada;
                 }
 

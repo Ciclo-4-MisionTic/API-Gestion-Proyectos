@@ -62,10 +62,15 @@ const tiposProyecto = gql`
             lider: String!
             objetivos: [crearObjetivo]
         ): Proyecto
+
         editarProyecto(_id: String!,campos: camposProyecto!): Proyecto
+
         eliminarProyecto(_id:String nombre: String): Proyecto
+
         crearObjetivo(idProyecto:String!, campos: camposObjetivo): Proyecto
+
         editarObjetivo(idProyecto:String!, indexObjetivo:Int!, campos:camposObjetivo): Proyecto
+        
         eliminarObjetivo(idProyecto: String!, idObjetivo: String!): Proyecto
         }
 
