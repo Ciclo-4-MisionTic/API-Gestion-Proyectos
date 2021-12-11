@@ -20,7 +20,7 @@ const validateToken =(token) =>{
 
 const generateToken =(payload)=>{
     return jwt.sign(payload, 'secret',{
-        expiresIn: '24H', 
+        expiresIn: '24H',
     });
 };
 
