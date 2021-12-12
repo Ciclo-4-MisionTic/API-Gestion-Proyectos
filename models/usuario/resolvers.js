@@ -5,8 +5,8 @@ const resolversUsuario ={
 
     Query: {
         Usuarios: async (parent,args, context)=>{
-            console.log( 'context',context)
-            if(context.userData.rol === 'ADMINISTRADOR'){
+            console.log('context',context);
+            if (context.userData.rol ==='ADMINISTRADOR'){
                 const usuarios = await UserModel.find().populate([{
                     path: 'inscripciones',
                     populate: {
