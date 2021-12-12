@@ -14,6 +14,7 @@ const validateToken =(token) =>{
                 }
             }
         });
+        console.log(verification, token);
         return verification;
     }
 };

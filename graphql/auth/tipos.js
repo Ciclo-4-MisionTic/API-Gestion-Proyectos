@@ -20,8 +20,6 @@ const tiposAutenticacion = gql`
         login(correo: String!, password: String!): Token
 
         refreshToken: Token
-
-        # refreshToken: Token
     }
 `;
 

@@ -5,8 +5,8 @@ const resolversUsuario ={
 
     Query: {
         Usuarios: async (parent,args, context)=>{
-            console.log('context',context);
-            if (context.userData.rol ==='ADMINISTRADOR'){
+            console.log( 'context',context)
+            if(context.userData.rol === 'ADMINISTRADOR'){
                 const usuarios = await UserModel.find().populate([{
                     path: 'inscripciones',
                     populate: {
@@ -20,12 +20,9 @@ const resolversUsuario ={
                 path: 'proyectosLiderados'
                 },
             ]);
-                return  usuarios;
-            } return null;
-            //else if (context.userData.rol ==='LIDER'){
-                //const usuarios = await UserModel.find({rol: "ESTUDIANTE"});
-                //return usuarios;
-            //}
+            return  usuarios;
+            }
+            return null;
         },
         Usuario: async(parent,args) =>{
             const usuario= await UserModel.findOne({_id:args._id});
