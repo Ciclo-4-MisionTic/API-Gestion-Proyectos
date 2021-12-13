@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt';
 import { generateToken } from "../../utils/tokenUtils.js";
 
 const resolversAutenticacion ={
+
+
     Mutation:{
         registro: async (parent,args) =>{
 
@@ -10,12 +12,12 @@ const resolversAutenticacion ={
             const hashedPassword = await bcrypt.hash(args.password, salt )
 
             const usuarioCreado = await UserModel.create({
-                nombre: args.nombre, 
-                apellido: args.apellido, 
+                nombre: args.nombre,
+                apellido: args.apellido,
                 identificacion: args.identificacion,
-                correo: args.correo, 
-                rol: args.rol, 
-                password: hashedPassword, 
+                correo: args.correo,
+                rol: args.rol,
+                password: hashedPassword,
             });
             console.log("usuario creado", usuarioCreado)
             return {

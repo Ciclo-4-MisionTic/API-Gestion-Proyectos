@@ -21,6 +21,9 @@ const resolversUsuario ={
                 },
             ]);
             return  usuarios;
+            }else if (context.userData.rol === 'LIDER'){
+                const usuarios = await UserModel.find({rol: 'ESTUDIANTE'});
+                return usuarios;
             }
             return null;
         },
@@ -28,9 +31,13 @@ const resolversUsuario ={
             const usuario= await UserModel.findOne({_id:args._id});
             return usuario;
         },
-        filtrarRol: async(parent,args)=>{
-            const rolFiltrado = await UserModel.find({rol: args.rolUsuario})
+        filtrarRol: async(parent,args, context)=>{
+            console.log('context',context);
+            if (context.userData.rol ==='LIDER'){
+                const rolFiltrado = await UserModel.find({rol: args.rolUsuario})
             return rolFiltrado;
+            }
+            return null;
         },
     },
 
