@@ -67,7 +67,6 @@ const resolversAvance = {
             return avanceConObservaciones;
         },
 
-    },
-};
+    };
 
 export { resolversAvance };
