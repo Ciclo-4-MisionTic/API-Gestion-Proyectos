@@ -6,7 +6,7 @@ const resolversUsuario ={
     Query: {
         Usuarios: async (parent,args, context)=>{
             console.log('context',context);
-            if (context.userData.rol ==='ADMINISTRADOR'){
+            if (context.userData.rol === 'ADMINISTRADOR'){
                 const usuarios = await UserModel.find().populate([{
                     path: 'inscripciones',
                     populate: {
@@ -23,6 +23,9 @@ const resolversUsuario ={
             return  usuarios;
             }else if (context.userData.rol === 'LIDER'){
                 const usuarios = await UserModel.find({rol: 'ESTUDIANTE'});
+                return usuarios;
+            }else if (context.userData.rol === 'ADMINISTRADOR') {
+                const usuarios = await UserModel.find();
                 return usuarios;
             }
             return null;
