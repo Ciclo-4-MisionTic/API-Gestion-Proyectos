@@ -1,7 +1,6 @@
 import { gql } from 'apollo-server-express';
 
 const tiposEnums = gql`
-  
   enum Enum_EstadoUsuario {
     PENDIENTE
     AUTORIZADO
@@ -31,6 +30,6 @@ const tiposEnums = gql`
     RECHAZADO
     PENDIENTE
   }
-  
 `;
-export { tiposEnums};
+
+export { tiposEnums };

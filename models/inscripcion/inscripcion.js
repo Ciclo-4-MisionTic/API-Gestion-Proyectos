@@ -27,6 +27,7 @@ const inscriptionSchema = new Schema ({
         ref: ProjectModel,
         required: true,
     },
+    
     estudiante:{
         type:Schema.Types.ObjectId,
         ref: UserModel,
@@ -34,5 +35,5 @@ const inscriptionSchema = new Schema ({
     }
 })
 
-const InscriptionModel = model("Incripcion",  inscriptionSchema);
+const InscriptionModel = model("Inscripcion",  inscriptionSchema);
 export {InscriptionModel};

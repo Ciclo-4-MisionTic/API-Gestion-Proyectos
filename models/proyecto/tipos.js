@@ -41,8 +41,11 @@ const tiposProyecto = gql`
         Proyectos: [Proyecto]
         Proyecto(_id:String!): Proyecto
         filtrarProyecto(lider: String!): [Proyecto]
+
     }
+
     type Mutation {
+
         crearProyecto(
             nombre: String!
             presupuesto: Float!
@@ -53,9 +56,13 @@ const tiposProyecto = gql`
             lider: String!
             objetivos: [crearObjetivo]
         ): Proyecto
+
         editarProyecto(_id: String!,campos: camposProyecto!): Proyecto
+
         eliminarProyecto(_id:String nombre: String): Proyecto
+
         crearObjetivo(idProyecto:String!, campos: camposObjetivo): Proyecto
+
         editarObjetivo(idProyecto:String!, indexObjetivo:Int!, campos:camposObjetivo): Proyecto
         
         eliminarObjetivo(idProyecto: String!, idObjetivo: String!): Proyecto
