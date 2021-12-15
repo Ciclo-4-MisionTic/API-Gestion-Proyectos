@@ -6,8 +6,9 @@ const resolversUsuario ={
     Query: {
         Usuarios: async (parent,args, context)=>{
             console.log('context',context);
+            console.log(args)
             // if (context.userData.rol ==='ADMINISTRADOR'){
-                const usuarios = await UserModel.find()
+                const usuarios = await UserModel.find({ ...args.filtro})
                 .populate([{
                     path: 'inscripciones',
                     populate: {
@@ -29,9 +30,13 @@ const resolversUsuario ={
             const usuario= await UserModel.findOne({_id:args._id});
             return usuario;
         },
-        filtrarRol: async(parent,args)=>{
-            const rolFiltrado = await UserModel.find({rol: args.rolUsuario})
+        filtrarRol: async(parent,args, context)=>{
+            console.log('context',context);
+            if (context.userData.rol ==='LIDER'){
+                const rolFiltrado = await UserModel.find({rol: args.rolUsuario})
             return rolFiltrado;
+            }
+            return null;
         },
     },
 

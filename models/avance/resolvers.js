@@ -3,9 +3,13 @@ import { ModeloAvance } from "./avance.js"
 
 const resolversAvance = {
     Query:{
-        Avances: async(parent, args) =>{
-            const avances = await ModeloAvance.find().populate("proyecto").populate("creadoPor");
+        Avances: async(parent, args, context) =>{
+            console.log('context',context);
+            if (context.userData.rol === ['ADMINISTRADOR'] || ['LIDER']){
+                const avances = await ModeloAvance.find().populate("proyecto").populate("creadoPor");
             return avances;
+        }
+        return null;
         },
         filtrarAvance: async(parent,args)=>{
             const avanceFiltrado = await ModeloAvance.find({proyecto: args.idProyecto})
