@@ -8,7 +8,7 @@ const resolversUsuario ={
             console.log('context',context);
             console.log(args)
             if (context.userData.rol ==='ADMINISTRADOR'){
-                const usuarios = await UserModel.find({ ...args.filtro})
+                const usuarios = await UserModel.find({...args.filtro})
                 .populate([{
                     path: 'inscripciones',
                     populate: {
