@@ -3,7 +3,14 @@ import { ProjectModel } from "./proyecto.js";
 const resolversProyecto ={
 
     Query: {
-        Proyectos: async(parent,args) =>{
+        Proyectos: async(parent,args,context) =>{
+            if(context.userData){
+                if(context.userData.rol === "LIDER"){
+                    const proyectos = await ProjectModel.find({lider:context.userData._id}).populate("lider").populate('avances').populate('inscripciones');
+                    console.log("es líder de", proyectos)
+                return proyectos;
+            }
+        }
             const proyectos = await ProjectModel.find().populate("lider").populate('avances').populate('inscripciones');
             return proyectos;
         },
