@@ -26,6 +26,7 @@ const server = new ApolloServer({
     const token = req.headers?.authorization ?? null;
     if (token){
       const userData = getUserData(token);
+      console.log("use data", userData);
       if (userData){
         return { userData };
       }
