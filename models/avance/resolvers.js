@@ -49,16 +49,29 @@ const resolversAvance = {
                 return avanceEliminado;
             }
         },
-        
-        crearObservacion: async (parent,args)=>{
-            const avanceConObservaciones = await ModeloAvance.findByIdAndUpdate(args.idAvance,{
-                $addToSet:{
-                    observaciones:{... args.campos},
+        crearObservacion:async(parents,args)=>{
+            const avanceModificado=await ModeloAvance.findByIdAndUpdate(
+                args._id,
+                {
+                    $addToSet:{
+                        observaciones:args.observacion,
+                    },
                 },
-            }, {new:true});
-
-            return avanceConObservaciones;
+                {new:true}
+            );
+            return avanceModificado;
         },
+
+        
+        // crearObservacion: async (parent,args)=>{
+        //     const avanceConObservaciones = await ModeloAvance.findByIdAndUpdate(args.idAvance,{
+        //         $addToSet:{
+        //             observaciones:{... args.campos},
+        //         },
+        //     }, {new:true});
+
+        //     return avanceConObservaciones;
+        // },
 
     },
 };
