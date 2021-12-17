@@ -19,25 +19,15 @@ const resolversAvance = {
       },
     },
     Mutation: {
-      crearAvance: async (parents, args) => {
-        const avanceCreado = await ModeloAvance.create({
-          fecha: args.fecha,
-          descripcion: args.descripcion,
-          proyecto: args.proyecto,
-          creadoPor: args.creadoPor,
-        });
-  
-        const avances = await ModeloAvance.find({ proyecto: avanceCreado.proyecto });
-  
-        if (avances.length === 1) {
-          const proyectoModificado = await ProjectModel.findOneAndUpdate(
-            { _id: avanceCreado.proyecto },
-            {
-              fase: 'DESARROLLO',
-            }
-          );
-          console.log('proy modificado', proyectoModificado);
-        }
+        crearAvance: async(parent, args) =>{
+            const avanceCreado = ModeloAvance.create({
+                fecha: args.fecha,
+                descripcion: args.descripcion,
+                proyecto: args.proyecto,
+                creadoPor: args.creadoPor,
+                observaciones: args.observaciones,
+            })
+
             return avanceCreado;
         },
         
