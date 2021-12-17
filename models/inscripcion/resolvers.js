@@ -1,11 +1,25 @@
+import { ProjectModel } from "../proyecto/proyecto.js";
+import { UserModel } from "../usuario/usuario.js";
 import { InscriptionModel } from "./inscripcion.js";
 
 const resolversInscripciones = {
+    Inscripciones:{
+        proyecto: async (parent,args, context) => {
+            return await ProjectModel.findOne({_id: parent.proyecto});
+        },
+        estudiante: async (parent, args, context) => {
+            return await UserModel.findOne({_id: parent.estudiante});
+        },
+    },
 
     Query:{
-        Inscripciones: async (parent, args)=>{
-            const Inscripciones = await InscriptionModel.find().populate('proyecto').populate('estudiante');
-            return Inscripciones;
+        Inscripciones: async (parent, args, context)=>{
+            //console.log("context", context);
+                //if (context.userData.rol ===''){
+                 const Inscripciones = await InscriptionModel.find().populate('proyecto').populate('estudiante');
+                 return Inscripciones;
+                //}else {
+                   // return null;        
         },
     },
 
@@ -18,6 +32,7 @@ const resolversInscripciones = {
             });
             return inscripcionCreada;
         },
+        
 
         aprobarInscripcion: async (parent,args)=>{
             const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,{
