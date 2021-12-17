@@ -6,8 +6,8 @@ const resolversProyecto ={
         Proyectos: async(parent,args,context) =>{
             if(context.userData){
                 if(context.userData.rol === "LIDER"){
-                    const proyectos = await ProjectModel.find({lider:context.userData._id}).populate("lider").populate('avances').populate('inscripciones');
-                    console.log("es líder de", proyectos)
+                    const proyectos = await ProjectModel.find({lider:context.userData._id}).populate("lider").populate('inscripciones').populate("avances");
+                    
                 return proyectos;
             }
         }
