@@ -14,6 +14,10 @@ const userSchema = new Schema({
             message: 'Por favor introduzca una dirección de correo electrónico válida',
             },
     },
+    password:{
+        type: String,
+        required: true, 
+    },
     identificacion: {
         type: String,
         required: true,
