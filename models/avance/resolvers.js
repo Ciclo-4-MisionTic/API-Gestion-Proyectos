@@ -2,17 +2,21 @@ import { ModeloAvance } from "./avance.js"
 
 
 const resolversAvance = {
-    Query:{
-        Avances: async(parent, args) =>{
-            const avances = await ModeloAvance.find().populate("proyecto").populate("creadoPor");
-            return avances;
-        },
-        filtrarAvance: async(parent,args)=>{
-            const avanceFiltrado = await ModeloAvance.find({proyecto: args.idProyecto})
-                .populate("proyecto")
-                .populate("creadoPor")
-            return avanceFiltrado;
+    Query: {
+      Avances: async (parent, args) => {
+        let filter = {};
+        if (args.project) {
+          filter = { ...args };
         }
+        const avances = await ModeloAvance.find(filter).populate('proyecto').populate('creadoPor');
+        return avances;
+      },
+      filtrarAvance: async (parents, args) => {
+        const avanceFiltrado = await ModeloAvance.find({ proyecto: args._id })
+          .populate('proyecto')
+          .populate('creadoPor');
+        return avanceFiltrado;
+      },
     },
     Mutation: {
         crearAvance: async(parent, args) =>{
@@ -21,9 +25,12 @@ const resolversAvance = {
                 descripcion: args.descripcion,
                 proyecto: args.proyecto,
                 creadoPor: args.creadoPor,
+                observaciones: args.observaciones,
             })
+
             return avanceCreado;
         },
+        
         editarAvance: async(parent,args) => {
             const avanceEditado = await ModeloAvance.findByIdAndUpdate(args._id,{
                 descripcion: args.descripcion,
@@ -31,20 +38,6 @@ const resolversAvance = {
             {new:true}
             );
             return avanceEditado;
-
-            },
-
-            eliminarAvance: async(parent, args) =>{
-                if(Object.keys(args).includes("_id")){
-                    const avanceEliminado = await ModeloAvance.findOneAndDelete({_id: args._id});
-                    return avanceEliminado;
-                } else if(Object.keys(args).includes("descripcion")){
-                    const avanceEliminado = await ModeloAvance.findOneAndDelete({ descripcion: args.descripcion});
-                    return avanceEliminado;
-                }
-            },
-            
-
         },
         
         eliminarAvance: async(parent, args) =>{
@@ -67,7 +60,6 @@ const resolversAvance = {
             return avanceConObservaciones;
         },
 
-    };
-
-
+    },
+};
 export { resolversAvance };

@@ -13,8 +13,17 @@ const tiposUsuario = gql`
         avancesCreados: [Avance]
         proyectosLiderados: [Proyecto]
     }
+
+    input FiltroUsuarios {
+        _id: ID
+        identificacion: String
+        correo: String
+        estado: Enum_EstadoUsuario
+        rol: Enum_Rol
+    }
+
     type Query{
-        Usuarios: [Usuario]
+        Usuarios(filtro: FiltroUsuarios): [Usuario]
         Usuario(_id:String!): Usuario
         filtrarRol(rolUsuario: Enum_Rol!  ): [Usuario]
     }
@@ -26,6 +35,7 @@ const tiposUsuario = gql`
             correo: String!
             estado: Enum_EstadoUsuario
             rol: Enum_Rol!
+            password: String!
         ):Usuario
         editarUsuario(
             _id: String!
