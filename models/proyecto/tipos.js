@@ -1,20 +1,24 @@
 import {gql} from 'apollo-server-express';
 
 const tiposProyecto = gql`
+
     type Objetivo{
         _id: ID
         descripcion:String!,
         tipo:Enum_TipoObjetivo
     }
+
     input crearObjetivo{
         _id: ID
         descripcion:String!,
         tipo:Enum_TipoObjetivo
     }
+
     input camposObjetivo{
         descripcion:String!,
         tipo: Enum_TipoObjetivo
     }
+
     input camposProyecto {
         nombre: String
         presupuesto: Float
@@ -24,6 +28,7 @@ const tiposProyecto = gql`
         fase: Enum_FaseProyecto
         lider: String
     }
+
     type Proyecto{
         _id:ID!
         nombre: String!
@@ -37,6 +42,7 @@ const tiposProyecto = gql`
         avances: [Avance]
         inscripciones: [Inscripcion]
     }
+
     type Query{
         Proyectos: [Proyecto]
         Proyecto(_id:String!): Proyecto
@@ -65,5 +71,6 @@ const tiposProyecto = gql`
         
         eliminarObjetivo(idProyecto: String!, idObjetivo: String!): Proyecto
         }
+
     `;
 export {tiposProyecto};
