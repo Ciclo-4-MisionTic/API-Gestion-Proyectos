@@ -18,7 +18,14 @@ const resolversProyecto ={
     },
 
     Query: {
-        Proyectos: async(parent,args) =>{
+        Proyectos: async(parent,args,context) =>{
+            if(context.userData){
+                if(context.userData.rol === "LIDER"){
+                    const proyectos = await ProjectModel.find({lider:context.userData._id}).populate("lider").populate('inscripciones').populate("avances");
+                    
+                return proyectos;
+            }
+        }
             const proyectos = await ProjectModel.find().populate("lider").populate('avances').populate('inscripciones');
             return proyectos;
         },
@@ -37,8 +44,6 @@ const resolversProyecto ={
         crearProyecto: async(parent,args)=>{
             const proyectoCreado = await ProjectModel.create({
                 nombre: args.nombre,
-                estado: args.estado,
-                fase: args.fase,
                 fechaInicio: args.fechaInicio,
                 fechaFin: args.fechaFin,
                 presupuesto: args.presupuesto,
