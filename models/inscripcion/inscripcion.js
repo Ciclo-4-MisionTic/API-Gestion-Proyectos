@@ -1,28 +1,27 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+// import { Enum_EstadoIncripcion } from "../enums/enums.js";
 import { ProjectModel } from "../proyecto/proyecto.js";
 import { UserModel } from "../usuario/usuario.js";
 
-const {Schema,model} = mongoose;
 
-const inscriptionSchema = new Schema({
+const{Schema,model}=mongoose;
 
+
+const inscriptionSchema = new Schema ({
     estado: {
         type: String,
-        enum: ["ACEPTADO", "RECHAZADO", "PEDIENTE"],
-        default: "PENDIENTE",
+        enum: ["ACEPTADO","RECHAZADO","PENDIENTE"],
+        default:"PENDIENTE",
         required: true,
     },
-
     fechaIngreso: {
         type: Date,
-        required: false,
+        required: true,
     },
-
     fechaEgreso:{
         type: Date,
-        required: false,
+        required: true,
     },
-
     proyecto:{
         type: Schema.Types.ObjectId,
         ref: ProjectModel,
