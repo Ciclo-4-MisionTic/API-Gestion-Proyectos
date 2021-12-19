@@ -2,20 +2,20 @@ import { ProjectModel } from "./proyecto.js";
 
 const resolversProyecto ={
 
-    Proyecto:{
-        lider: async (parent,arg,context) => {
-            const usr = await UserModel.findOne({
-                _id: parent.lider.toString(),
-            });
-            return usr;
-        },
-        Inscripciones: async (parent,args,context) => {
-            const inscripciones =  await InscriptionModel.find({
-                proyecto: parent._id,
-            });  
-            return inscripciones;      
-        },
-    },
+    // Proyecto:{
+    //     lider: async (parent,arg,context) => {
+    //         const usr = await UserModel.findOne({
+    //             _id: parent.lider.toString(),
+    //         });
+    //         return usr;
+    //     },
+    //     Inscripciones: async (parent,args,context) => {
+    //         const inscripciones =  await InscriptionModel.find({
+    //             proyecto: parent._id,
+    //         });  
+    //         return inscripciones;      
+    //     },
+    // },
 
     Query: {
         Proyectos: async(parent,args,context) =>{
