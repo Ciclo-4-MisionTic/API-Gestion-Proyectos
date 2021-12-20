@@ -56,48 +56,7 @@ const resolversUsuario = {
         usuarioCreado.estado = args.estado;
       }
 
-<<<<<<< HEAD
-    Query: {
-        Usuarios: async (parent,args, context)=>{
-            console.log('context',context);
-            console.log(args)
-            if (context.userData.rol ==='ADMINISTRADOR'){
-                const usuarios = await UserModel.find({...args.filtro})
-                .populate([{
-                    path: 'inscripciones',
-                    populate: {
-                        path: 'proyecto',
-                        populate:[
-                            {path: 'lider'},{path: 'avances'}
-                        ],
-                    },
-                },
-                {
-                path: 'proyectosLiderados'
-                },
-            ]);
-            return  usuarios;
-            }else if (context.userData.rol === 'LIDER'){
-                const usuarios = await UserModel.find({rol: 'ESTUDIANTE'});
-                return usuarios;
-            }
-            return usuarios;
-        },
-        Usuario: async(parent,args) =>{
-            const usuario= await UserModel.findOne({_id:args._id});
-            return usuario;
-        },
-        filtrarRol: async(parent,args, context)=>{
-            console.log('context',context);
-            if (context.userData.rol ==='LIDER'){
-                const rolFiltrado = await UserModel.find({rol: args.rolUsuario})
-            return rolFiltrado;
-            }
-            return null;
-        },
-=======
       return usuarioCreado;
->>>>>>> 7022890115d1a35e2c816edda91fb53ea18361a4
     },
     editarUsuario: async (parent, args) => {
       const usuarioEditado = await UserModel.findByIdAndUpdate(
