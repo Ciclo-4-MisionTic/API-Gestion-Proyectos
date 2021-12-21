@@ -10,4 +10,6 @@ const conectarBD = async () =>{
         console.error("Error conectando a la bd", e);
     })
     };
+
     export default conectarBD;
+
