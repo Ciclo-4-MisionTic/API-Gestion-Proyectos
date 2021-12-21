@@ -33,7 +33,7 @@ const resolversUsuario = {
           return usuarios;
       }
       return usuarios;
-  },
+    },
     Usuario: async (parent, args) => {
       const usuario = await UserModel.findOne({ _id: args._id });
       return usuario;
