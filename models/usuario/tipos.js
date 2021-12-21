@@ -47,12 +47,12 @@ const tiposUsuario = gql`
     ): Usuario
 
     editarUsuario(
-      _id: String!
-      nombre: String!
-      apellido: String!
-      identificacion: String!
-      correo: String!
-      estado: Enum_EstadoUsuario!
+      _id: String
+      nombre: String
+      apellido: String
+      identificacion: String
+      correo: String
+      estado: Enum_EstadoUsuario
     ): Usuario
 
     editarPerfil(_id: String!, campos: CamposEditarPerfil!): Usuario
